@@ -9,9 +9,9 @@ import { Route } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Route){ }
+  constructor(private route: Route){ }
 
   irParaCliente(){
-    this.router.navigation(['cliente'])
+    this.route.
   }
 }
