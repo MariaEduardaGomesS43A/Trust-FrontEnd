@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,9 @@ import { Route } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private route: Route){ }
+  constructor(private route: Router){ }
 
   irParaCliente(){
-    this.route.
+    this.route.navigate(['cliente']);
   }
 }
