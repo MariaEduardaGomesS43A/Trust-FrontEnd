@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,9 @@ import { Route, Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private route: Router){ }
+  constructor(private route: Router) { }
 
-  irParaCliente(){
-    this.route.navigate(['cliente']); //pelo amor amor de Deus funciona
+  irParaCliente() {
+    this.route.navigate(['cliente']);
   }
 }
