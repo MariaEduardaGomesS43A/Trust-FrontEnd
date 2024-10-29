@@ -12,6 +12,6 @@ export class HomeComponent {
   constructor(private route: Router){ }
 
   irParaCliente(){
-    this.route.navigate(['cliente']);
+    this.route.navigate(['cliente']); //pelo amor amor de Deus funciona
   }
 }
