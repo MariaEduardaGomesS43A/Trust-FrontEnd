@@ -1,28 +1,42 @@
-<form [formGroup]="profileForm"
-(ngSubmit)="handleSubmit()">
-  <label
-    >Nome:
-    <input type="text" formControlName="name" />
+<form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+  <label>
+    Nome:
+    <input type="text" formControlName="name" maxlength="50" />
+    <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+      <small *ngIf="profileForm.get('name')?.errors?.['required']">Nome é obrigatório.</small>
+      <small *ngIf="profileForm.get('name')?.errors?.['minlength']">Nome precisa ter no mínimo 3 caracteres.</small>
+      <small *ngIf="profileForm.get('name')?.errors?.['maxlength']">Nome pode ter no máximo 50 caracteres.</small>
+    </div>
   </label>
-  <label
-    >Telefone:
-    <input type="text" formControlName="phone" />
+
+  <label>
+    Telefone:
+    <input type="text" formControlName="phone" maxlength="11"/>
+    <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">
+      <small *ngIf="profileForm.get('phone')?.errors?.['required']">Telefone é obrigatório.</small>
+      <small *ngIf="profileForm.get('phone')?.errors?.['pattern']">Digite um telefone válido (10-11 dígitos).</small>
+    </div>
   </label>
-  <label
-    >Cep:
-    <input type="text" formControlName="zipcode" />
+
+  <label>
+    Cep:
+    <input type="text" formControlName="zipcode" maxlength="8"/>
+    <div *ngIf="profileForm.get('zipcode')?.invalid && profileForm.get('zipcode')?.touched">
+      <small *ngIf="profileForm.get('zipcode')?.errors?.['required']">CEP é obrigatório.</small>
+    </div>
   </label>
-  <label
-    >Número:
-    <input type="number" formControlName="number" />
+
+  <label>
+    Número:
+    <input type="number" formControlName="number" maxlength="10"/>
+    <div *ngIf="profileForm.get('number')?.invalid && profileForm.get('number')?.touched">
+      <small *ngIf="profileForm.get('number')?.errors?.['required']">Número é obrigatório.</small>
+      <small *ngIf="profileForm.get('number')?.errors?.['min']">Número precisa ser maior que zero.</small>
+    </div>
   </label>
-  <button type="submit" >Submit</button>
+
+  <button type="submit" [disabled]="profileForm.invalid">Submit</button>
 </form>
 
-<div class="valor-formulario">
-  <h2>Profile Form</h2>
-  <p>Name: {{ profileForm.value.name }}</p>
-  <p>Email: {{ profileForm.value.phone }}</p>
-  <p>Name: {{ profileForm.value.zipcode }}</p>
-  <p>Email: {{ profileForm.value.number }}</p>
-</div>
+
+
