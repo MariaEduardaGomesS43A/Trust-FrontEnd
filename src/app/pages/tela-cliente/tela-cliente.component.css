@@ -6,7 +6,7 @@
 }
 
 body, html {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,14 +26,15 @@ div {
 
 /* Título */
 div h1 {
-  font-size: 24px;
-  color: #4d4c4c;
+  font-size: 54px;
+  color: #3E3E3E;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 /* Descrição */
 div p {
-  font-size: 14px;
+  font-size: 22px;
   color: #666;
   max-width: 500px;
   margin-bottom: 20px;
@@ -43,21 +44,21 @@ div p {
 /* Estilos responsivos para o container */
 @media (max-width: 768px) {
   div h1 {
-    font-size: 20px;
+    font-size: 34px;
   }
 
   div p {
-    font-size: 14px;
+    font-size: 17px;
     margin-bottom: 15px;
   }
 }
 
 @media (max-width: 480px) {
   div h1 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   div p {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
