@@ -3,3 +3,25 @@ body, app-root, :root {
   flex-direction: column;
   min-height: 100vh;
 }
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  form {
+    padding: 30px;
+  }
+
+  input[type="text"], input[type="tel"], input[type="number"] {
+    font-size: 1.1em;
+  }
+
+  button {
+    font-size: 1.1em;
+  }
+}

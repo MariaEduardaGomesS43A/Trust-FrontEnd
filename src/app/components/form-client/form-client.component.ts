@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
@@ -6,10 +7,14 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
 
+
+
+
+
 @Component({
   selector: 'app-form-client',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,  ],
   templateUrl: './form-client.component.html',
   styleUrl: './form-client.component.css'
 })
@@ -21,10 +26,11 @@ export class FormClientComponent {
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
     phone: new FormControl('', [
       Validators.required,
-      Validators.pattern("^\\d{10,11}$")
+      Validators.minLength(11)
     ]),
     zipcode: new FormControl('', [
       Validators.required,
+      Validators.minLength(8)
     ]),
     number: new FormControl('', [Validators.required, Validators.minLength(1)]),
   })
