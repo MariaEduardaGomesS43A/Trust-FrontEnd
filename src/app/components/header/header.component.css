@@ -1,0 +1,40 @@
+.card-header {
+  display: flex;
+  justify-content: left;
+  align-items: start;
+  width: 100%;
+  height: 138px;
+  background-color: #f5f5f5;
+}
+
+.p{
+  padding: 15px;
+}
+
+.back-button {
+  padding: 5px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 1.5rem; /* Ajuste o tamanho conforme necessário */
+  height: 1.5rem; /* Ajuste o tamanho conforme necessário */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.15rem;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.arrow-left::before {
+  content: '';
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
