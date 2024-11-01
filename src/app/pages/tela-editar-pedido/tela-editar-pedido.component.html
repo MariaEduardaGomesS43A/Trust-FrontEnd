@@ -1,1 +1,27 @@
-<p>tela-editar-pedido works!</p>
+<app-header></app-header>
+
+
+  <div class="section" *ngFor="let item of items">
+    <h2>{{ item.name }}</h2>
+    <div class="caixa-description">
+      <p class="description">{{ item.description }}</p>
+    </div>
+    <p class="serves">Serve {{ item.serves }} pessoa</p>
+    <p class="price">
+      R$ {{ item.price }}
+      <span class="original-price">R$ {{ item.originalPrice }}</span>
+    </p>
+    <p class="restaurant">{{ item.restaurant }}</p>
+    <p class="delivery-time">0-40 min</p>
+
+    <div class="caixa-edit">
+      <button class="edit-button">DESEJA EDITAR?</button>
+    </div>
+  </div>
+
+  <div class="observacoes">
+    <textarea id="observacoes" rows="4" placeholder="Observações:"></textarea>
+  </div>
+
+  <button class="confirm-button">CONFIRMAR</button>
+
