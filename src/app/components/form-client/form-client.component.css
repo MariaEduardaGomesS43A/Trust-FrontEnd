@@ -12,9 +12,11 @@ form {
 }
 
 form label {
+  text-align: start;
   width: 100%;
   margin-bottom: 15px;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 50px;
   color: #666;
 }
 
@@ -22,11 +24,11 @@ form input, form button {
   width: 100%;
   padding: 15px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border:none;
   border-radius: 5px;
   font-size: 16px;
   color: #333;
-  background-color: #f8f8f8;
+  background-color: #F2F2F2;
   outline: none;
 }
 
@@ -55,6 +57,11 @@ form button:hover:not(:disabled) {
   background-color: #8b0000;
 }
 
+small{
+  color: #f80303;
+}
+
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
   form {
@@ -76,7 +83,7 @@ form button:hover:not(:disabled) {
   form input,
   form button {
     font-size: 12px;
-    padding: 8px;
+    padding: 12px;
   }
   form label {
     font-size: 12px;

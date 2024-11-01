@@ -11,7 +11,7 @@
 
   <label>
     Telefone:
-    <input type="text" formControlName="phone"  minlength="11" maxlength="14"/>
+    <input type="text" formControlName="phone"  minlength="11" maxlength="14" placeholder="( ) _ _ _ _ _ - _ _ _ _"/>
     <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">
       <small *ngIf="profileForm.get('phone')?.errors?.['required']">Telefone é obrigatório.</small>
       <!-- <small *ngIf="profileForm.get('phone')?.errors?.['pattern']">Digite um telefone válido (10-11 dígitos).</small> -->
@@ -20,7 +20,7 @@
 
   <label>
     Cep:
-    <input type="text" formControlName="zipcode" minlength="8" maxlength="9"/>
+    <input type="text" formControlName="zipcode" minlength="8" maxlength="9" placeholder="_ _ _ _ _ - _ _ _"/>
     <div *ngIf="profileForm.get('zipcode')?.invalid && profileForm.get('zipcode')?.touched">
       <small *ngIf="profileForm.get('zipcode')?.errors?.['required']">CEP é obrigatório.</small>
     </div>
