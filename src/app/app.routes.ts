@@ -2,10 +2,12 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TelaClienteComponent } from './pages/tela-cliente/tela-cliente.component';
 import { TelaPedidosComponent } from './pages/tela-pedidos/tela-pedidos.component';
+import { TelaEditarPedidoComponent } from './pages/tela-editar-pedido/tela-editar-pedido.component';
 
 export const routes: Routes = [
   { path: '', component:  HomeComponent},
   { path: 'cliente', component:  TelaClienteComponent},
-  { path: 'pedidos', component:  TelaPedidosComponent},
+  { path: 'pedido', component:  TelaPedidosComponent},
+  { path: 'editar-pedido', component:  TelaEditarPedidoComponent},
 
 ];

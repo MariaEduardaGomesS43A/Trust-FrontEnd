@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-pedidos',
   standalone: true,
-  imports: [HeaderComponent, CommonModule,FormsModule],
+  imports: [HeaderComponent, CommonModule, FormsModule],
   templateUrl: './tela-pedidos.component.html',
   styleUrl: './tela-pedidos.component.css'
 })
 export class TelaPedidosComponent {
+  constructor(private router: Router){}
+
   items = [
     {
       category: 'Pizza',
@@ -40,20 +42,33 @@ export class TelaPedidosComponent {
   ];
 
   quantity = 1;
-  totalPrice = 69.90; // Ajustar conforme a lógica do seu carrinho
+  totalPrice = this.items[0].price; // Total inicial com base no primeiro item
 
   increaseQuantity(): void {
     this.quantity++;
+    this.updateTotalPrice();
   }
 
   decreaseQuantity(): void {
     if (this.quantity > 1) {
       this.quantity--;
+      this.updateTotalPrice();
     }
+  }
+
+  updateTotalPrice(): void {
+    this.totalPrice = this.items[0].price * this.quantity;
   }
 
   addToCart() {
     console.log('Item adicionado ao carrinho', this.items, this.quantity);
     // Adicione sua lógica de adicionar ao carrinho aqui
+    this.irParaEditarPedido()
   }
+
+
+  irParaEditarPedido(){
+    this.router.navigate(['/editar-pedido'])
+  }
+
 }

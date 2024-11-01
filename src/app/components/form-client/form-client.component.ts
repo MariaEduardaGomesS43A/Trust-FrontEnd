@@ -48,7 +48,7 @@ export class FormClientComponent {
 
 
   irParaPedidos(){
-    this.router.navigate(['/pedidos'])
+    this.router.navigate(['/pedido'])
   }
 
 }
