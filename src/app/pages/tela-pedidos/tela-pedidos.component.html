@@ -1,1 +1,32 @@
-<p>tela-pedidos works!</p>
+<app-header></app-header>
+
+<div class="container">
+  <div class="section" *ngFor="let item of items">
+    <hr />
+    <h2>{{ item.category }}</h2>
+    <hr />
+    <div class="item">
+      <h3>{{ item.name }}</h3>
+      <p class="description">{{ item.description }}</p>
+      <p class="serve">Serve: {{ item.serves }}</p>
+      <p class="price">
+        R$ {{ item.price }}
+        <span class="original-price">R$ {{ item.originalPrice }}</span>
+      </p>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="contador">
+      <button (click)="decreaseQuantity()">-</button>
+      <span>{{ quantity }}</span>
+      <button (click)="increaseQuantity()">+</button>
+    </div>
+
+    <div class="add">
+      <button class="add-button" (click)="addToCart()">
+        Adicionar
+        <span class="total-price">R$ {{ totalPrice | number:'1.2-2' }}</span>
+      </button>
+    </div>
+  </div>
+</div>
