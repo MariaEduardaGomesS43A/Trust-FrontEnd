@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PostPedidosService } from '../../services/post-pedidos.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tela-pedidos',
   standalone: true,
   imports: [HeaderComponent, CommonModule, FormsModule],
   templateUrl: './tela-pedidos.component.html',
-  styleUrl: './tela-pedidos.component.css'
+  styleUrls: ['./tela-pedidos.component.css']
 })
 export class TelaPedidosComponent {
-  constructor(private router: Router){}
-
   items = [
     {
       category: 'Pizza',
@@ -42,7 +42,9 @@ export class TelaPedidosComponent {
   ];
 
   quantity = 1;
-  totalPrice = this.items[0].price; // Total inicial com base no primeiro item
+  totalPrice = this.items[0].price;
+
+  constructor(private pedidoService: PostPedidosService, private route: Router) {}
 
   increaseQuantity(): void {
     this.quantity++;
@@ -60,15 +62,27 @@ export class TelaPedidosComponent {
     this.totalPrice = this.items[0].price * this.quantity;
   }
 
-  addToCart() {
-    console.log('Item adicionado ao carrinho', this.items, this.quantity);
-    // Adicione sua lógica de adicionar ao carrinho aqui
-    this.irParaEditarPedido()
+  addToCart(): void {
+    const orderData = {
+      items: this.items,
+      quantity: this.quantity,
+      totalPrice: this.totalPrice
+    };
+
+    this.pedidoService.enviarPedido(orderData).subscribe(
+      response => {
+        console.log('Pedido enviado com sucesso:', response);
+        this.irParaEditarPedidos()
+      },
+      error => {
+        console.error('Erro ao enviar o pedido:', error);
+        this.irParaEditarPedidos()
+      }
+    );
   }
 
 
-  irParaEditarPedido(){
-    this.router.navigate(['/editar-pedido'])
+  irParaEditarPedidos() {
+    this.route.navigate(['editar-pedido']);
   }
-
 }
