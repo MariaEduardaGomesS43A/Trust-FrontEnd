@@ -1,26 +1,26 @@
-<div class="container">
+<div class="container" *ngIf="orderDetails">
   <div class="header">
-    <button class="back-button" (click)="irParaCliente()"><</button>
+    <button class="back-button"><</button>
     <h1>PEDIDO REALIZADO COM SUCESSO</h1>
   </div>
 
   <div class="order-info">
     <div class="arrumar-caixa">
-      <p><strong>Pedido - 12345</strong></p>
-      <p class="status">PREPARANDO PEDIDO</p>
-      <p class="estimate">ESTIMATIVA DE ENTREGA: 40 MIN</p>
+      <p><strong>Pedido - {{ orderDetails.id }}</strong></p>
+      <p class="status">{{ orderDetails.status }}</p>
+      <p class="estimate">ESTIMATIVA DE ENTREGA: {{ orderDetails.deliveryEstimate }}</p>
     </div>
     <p class="address">
-      <span class="rua">Rua:</span> João Torres Neto Miguel, 152 - Parque Sol
+      <span class="rua">Rua:</span> {{ orderDetails.address }}
     </p>
-    <p class="rua">Vendido e entregue por: Trust</p>
+    <p class="rua">Vendido e entregue por: {{ orderDetails.seller }}</p>
   </div>
 
   <div class="order-details">
     <h2>DETALHES DO PEDIDO</h2>
-    <div class="item">
-      <p class="rua">1x Pizza de Calabresa Com Cebola Caramelizada</p>
-      <span>R$ 69,00</span>
+    <div *ngFor="let item of orderDetails.items" class="item">
+      <p class="rua">{{ item.quantity }}x {{ item.name }}</p>
+      <span>R$ {{ item.price.toFixed(2) }}</span>
     </div>
   </div>
 
@@ -28,19 +28,19 @@
     <h2>INFORMAÇÕES DO PAGAMENTO</h2>
     <div class="summary">
       <p>Resumo de valores:</p>
-      <span>R$ 69,90</span>
+      <span>R$ {{ orderDetails.paymentInfo.subtotal.toFixed(2) }}</span>
     </div>
     <div class="delivery-fee">
       <p>Taxa de entrega:</p>
-      <span>R$ 7,00</span>
+      <span>R$ {{ orderDetails.paymentInfo.deliveryFee.toFixed(2) }}</span>
     </div>
     <div class="total">
       <p>Total:</p>
-      <span>R$ 76,90</span>
+      <span>R$ {{ orderDetails.paymentInfo.total.toFixed(2) }}</span>
     </div>
     <div class="payment-method">
-      <p>Pix</p>
-      <span>R$ 76,90</span>
+      <p>{{ orderDetails.paymentInfo.method }}</p>
+      <span>R$ {{ orderDetails.paymentInfo.total.toFixed(2) }}</span>
     </div>
   </div>
 
