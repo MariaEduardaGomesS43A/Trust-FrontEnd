@@ -21,8 +21,10 @@
     </div>
 
     <div class="observacoes">
-      <textarea id="observacoes" rows="4" placeholder="Observações:"></textarea>
+      <!-- Associa o valor da textarea à variável observacoes -->
+      <textarea id="observacoes" rows="4" placeholder="Observações:" [(ngModel)]="observacoes"></textarea>
     </div>
   </div>
-  <button class="confirm-button">CONFIRMAR</button>
+  <!-- Chama o método confirmarPedido ao clicar no botão CONFIRMAR -->
+  <button class="confirm-button" (click)="confirmarPedido(items[0])">CONFIRMAR</button>
 </div>
