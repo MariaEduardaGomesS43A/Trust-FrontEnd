@@ -22,9 +22,25 @@
 
     <div class="observacoes">
       <!-- Associa o valor da textarea à variável observacoes -->
-      <textarea id="observacoes" rows="4" placeholder="Observações:" [(ngModel)]="observacoes"></textarea>
+      <textarea
+        id="observacoes"
+        rows="4"
+        placeholder="Observações:"
+        [(ngModel)]="observacoes"
+      ></textarea>
     </div>
   </div>
   <!-- Chama o método confirmarPedido ao clicar no botão CONFIRMAR -->
-  <button class="confirm-button" (click)="confirmarPedido(items[0])">CONFIRMAR</button>
+  <button class="confirm-button" (click)="confirmarPedido(items[0])">
+    CONFIRMAR
+  </button>
+
+  <!-- codigo condicional -->
+  <div *ngIf="showConfirm" class="confirm-box">
+    <p>DESEJA CONFIRMAR O PEDIDO?</p>
+    <div>
+      <button (click)="onConfirmEdit()">Sim</button>
+      <button (click)="onCancelEdit()">Não</button>
+    </div>
+  </div>
 </div>
