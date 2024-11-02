@@ -1,1 +1,52 @@
-<p>tela-pedido-sucesso works!</p>
+<div class="container">
+  <div class="header">
+    <button class="back-button" (click)="irParaCliente()"><</button>
+    <h1>PEDIDO REALIZADO COM SUCESSO</h1>
+  </div>
+
+  <div class="order-info">
+    <div class="arrumar-caixa">
+      <p><strong>Pedido - 12345</strong></p>
+      <p class="status">PREPARANDO PEDIDO</p>
+      <p class="estimate">ESTIMATIVA DE ENTREGA: 40 MIN</p>
+    </div>
+    <p class="address">
+      <span class="rua">Rua:</span> João Torres Neto Miguel, 152 - Parque Sol
+    </p>
+    <p class="rua">Vendido e entregue por: Trust</p>
+  </div>
+
+  <div class="order-details">
+    <h2>DETALHES DO PEDIDO</h2>
+    <div class="item">
+      <p class="rua">1x Pizza de Calabresa Com Cebola Caramelizada</p>
+      <span>R$ 69,00</span>
+    </div>
+  </div>
+
+  <div class="payment-info">
+    <h2>INFORMAÇÕES DO PAGAMENTO</h2>
+    <div class="summary">
+      <p>Resumo de valores:</p>
+      <span>R$ 69,90</span>
+    </div>
+    <div class="delivery-fee">
+      <p>Taxa de entrega:</p>
+      <span>R$ 7,00</span>
+    </div>
+    <div class="total">
+      <p>Total:</p>
+      <span>R$ 76,90</span>
+    </div>
+    <div class="payment-method">
+      <p>Pix</p>
+      <span>R$ 76,90</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <hr />
+    <p>PAGAMENTO SERÁ REALIZADO NA ENTREGA</p>
+    <hr />
+  </div>
+</div>
