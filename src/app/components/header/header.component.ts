@@ -13,6 +13,8 @@ export class HeaderComponent {
   @Input() showButton: boolean = true;
   @Input() Title: string = '';
 
+  @Input() customClass: string = '';
+
   constructor(private route: Router){}
 
   irParaCliente() {

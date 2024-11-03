@@ -40,10 +40,9 @@ export class TelaPedidosComponent {
       originalPrice: 15.00
     }
   ];
-
   quantity = 1;
   totalPrice = this.items[0].price;
-  headerTitulo = "Trust: Seu Pedido, Nossa Prioridade"
+  Title = "Trust: Seu Pedido, Nossa Prioridade"
 
   constructor(private pedidoService: PostPedidosService, private route: Router) {}
 
@@ -85,5 +84,9 @@ export class TelaPedidosComponent {
 
   irParaEditarPedidos() {
     this.route.navigate(['editar-pedido']);
+  }
+
+  irParaCliente() {
+    this.route.navigate(['']);
   }
 }
