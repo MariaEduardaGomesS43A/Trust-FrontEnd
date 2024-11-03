@@ -11,7 +11,10 @@
       R$ {{ item.price | decimalFormatter }}
       <span class="original-price">R$ {{ item.originalPrice | decimalFormatter}}</span>
     </p>
-    <p class="restaurant">{{ item.restaurant }}</p>
+    <p class="restaurant">
+      <img src="../../../assets/images/restaurant.png" alt="">
+      {{ item.restaurant }}
+    </p>
     <p class="delivery-time">0-40 min</p>
 
     <div class="caixa-contem">

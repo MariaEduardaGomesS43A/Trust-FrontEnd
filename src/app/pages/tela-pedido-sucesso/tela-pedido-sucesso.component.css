@@ -64,7 +64,7 @@
   background: #fff;
   border-radius: 8px;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+
 }
 
 .order-info{
@@ -102,11 +102,13 @@ p.estimate  {
   font-size: 13px;
 }
 
-.payment-info{
+.tab-info{
+  border-radius: 20px;
   border: #000 1px solid;
   margin: 5px;
   padding: 10px;
 }
+
 
 .payment-info span{
   color: #50A773;
@@ -175,6 +177,12 @@ p.estimate  {
 
 .footer{
   padding-top: 1rem;
+}
+
+.caixa-pix{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 /* Responsividade */
