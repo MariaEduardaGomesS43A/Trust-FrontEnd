@@ -38,3 +38,13 @@
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+
+.title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span{
+  padding: 50px;
+}

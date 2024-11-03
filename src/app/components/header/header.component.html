@@ -1,5 +1,10 @@
 <div class="card-header">
   <div class="p">
-    <button class="back-button" (click)="irParaCliente()"> < </button>
+    <button class="back-button" *ngIf="showButton" (click)="irParaCliente()">
+      <
+    </button>
+  </div>
+  <div class="title">
+    <span>{{ Title }}</span>
   </div>
 </div>

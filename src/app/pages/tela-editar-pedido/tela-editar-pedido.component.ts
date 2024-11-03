@@ -30,6 +30,7 @@ export class TelaEditarPedidoComponent implements OnInit {
   observacoes = ''; // Armazena o valor da textarea
   showConfirm = false; // Controle para exibir o toast
   selectedItem: any; // Armazena o item selecionado para confirmar
+  headerTitulo = 'PEDIDOS';
 
   constructor(
     private router: Router,

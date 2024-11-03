@@ -43,6 +43,7 @@ export class TelaPedidosComponent {
 
   quantity = 1;
   totalPrice = this.items[0].price;
+  headerTitulo = "Trust: Seu Pedido, Nossa Prioridade"
 
   constructor(private pedidoService: PostPedidosService, private route: Router) {}
 

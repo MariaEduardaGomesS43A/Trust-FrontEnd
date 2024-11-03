@@ -10,6 +10,9 @@ import { HeaderComponent } from "../../components/header/header.component";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  showHeaderButton = false;
+  headerTitulo = 'Faça sua compra na Trust';
+
   constructor(private route: Router) { }
 
   irParaCliente() {
