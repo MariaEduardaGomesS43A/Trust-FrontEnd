@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostPedidosService } from '../../services/post-pedidos.service';
 import { Router } from '@angular/router';
+import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
 
 
 @Component({
   selector: 'app-tela-pedidos',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, FormsModule],
+  imports: [HeaderComponent, CommonModule, FormsModule, DecimalFormatterPipe ],
   templateUrl: './tela-pedidos.component.html',
   styleUrls: ['./tela-pedidos.component.css']
 })

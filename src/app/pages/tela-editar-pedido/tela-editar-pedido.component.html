@@ -8,8 +8,8 @@
     </div>
     <p class="serves">Serve {{ item.serves }}</p>
     <p class="price">
-      R$ {{ item.price }}
-      <span class="original-price">R$ {{ item.originalPrice }}</span>
+      R$ {{ item.price | decimalFormatter }}
+      <span class="original-price">R$ {{ item.originalPrice | decimalFormatter}}</span>
     </p>
     <p class="restaurant">{{ item.restaurant }}</p>
     <p class="delivery-time">0-40 min</p>

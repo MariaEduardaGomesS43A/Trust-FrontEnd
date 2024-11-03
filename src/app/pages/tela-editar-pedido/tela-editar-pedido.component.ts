@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EditarPedidoService } from '../../services/editar-pedido.service';
 import { FormsModule } from '@angular/forms';
+import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
 
 @Component({
   selector: 'app-tela-editar-pedido',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, FormsModule],
+  imports: [HeaderComponent, CommonModule, FormsModule, DecimalFormatterPipe],
   templateUrl: './tela-editar-pedido.component.html',
   styleUrls: ['./tela-editar-pedido.component.css']
 })
