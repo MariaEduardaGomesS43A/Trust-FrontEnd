@@ -17,7 +17,7 @@
     <div class="item">
       <h3>{{ item.name }}</h3>
       <p class="description">{{ item.description }}</p>
-      <p class="serve">Serve: {{ item.serves }}</p>
+      <p class="serve" *ngIf="item.serves">Serve: {{ item.serves }}</p>
       <p class="price">
         R$ {{ item.price | decimalFormatter }}
         <span class="original-price">R$ {{ item.originalPrice | decimalFormatter }}</span>
