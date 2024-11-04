@@ -1,0 +1,56 @@
+<main>
+  <div class="header">
+    <button (click)="goBack()"></button>
+  </div>
+  <h1>Pedidos Recentes</h1>
+  <div class="box-total-pedido" (click)="onDivClick()">
+    <div class="header-color"></div>
+    <div class="infos-pedido">
+      <h5>N° - 12345</h5>
+      <p>1x Pizza De Calabresa Com Cebola Caramelizada</p>
+
+      <div class="infos">
+        <span>OBS:</span> 
+        <p>40 minutos</p>
+      </div>
+      <!-- <p>obs</p> -->
+    </div>
+  </div>
+  <div class="box-total-pedido" (click)="onDivClick()" >
+    <div class="header-color" style="background-color: #F7F050;"></div>
+    <div class="infos-pedido">
+      <h5>N° - 12345</h5>
+      <p>1x Pizza De Calabresa Com Cebola Caramelizada</p>
+
+      <div class="infos">
+        <span>OBS:</span> 
+        <p style="background-color: #F7F050;">40 minutos</p>
+      </div>
+      <!-- <p>obs</p> -->
+    </div>
+  </div>
+  <div class="box-total-pedido" (click)="onDivClick()">
+    <div class="header-color" style="background-color: #F75050;"></div>
+    <div class="infos-pedido">
+      <h5>N° - 12345</h5>
+      <p>1x Pizza De Calabresa Com Cebola Caramelizada</p>
+
+      <div class="infos">
+        <span>OBS:</span> 
+        <p style="background-color: #F75050;">40 minutos</p>
+      </div>
+      <!-- <p>obs</p> -->
+    </div>
+  </div>
+
+  <div *ngIf="showConfirm" class="confirm-box">
+    <p>DESEJA CONFIRMAR O PEDIDO?</p>
+    <div>
+
+      <button (click)="onConfirmDelete()">Sim</button>
+      <button (click)="onCancelDelete()">Não</button>
+    </div>
+
+  </div>
+
+</main>

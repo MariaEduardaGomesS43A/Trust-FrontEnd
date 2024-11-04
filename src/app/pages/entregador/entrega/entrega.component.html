@@ -1,0 +1,48 @@
+<main>
+    <div class="header">
+        <button (click)="goBack()"></button>
+        <h3>entrega</h3>
+    </div>
+
+    <div class="total-info-pedido">
+
+        <div class="info-entrega">
+            <h5>Dados da entrega </h5>
+
+            <p>Cliente: Pedro Wilsen</p>
+            <p>Telefone: (11) 98510-5895</p>
+            <p>Rua <span>João Torres Neto Miguel, 152 - Parque Sol</span></p>
+            <p>Pedido <span> 1x Pizza de Calabresa com Cebola Caramelizada </span></p>
+            <p>Número do pedido: <span> 12345 </span></p>
+        </div>
+        <div class="info-pagamento">
+            <h5>Dados do pagamento </h5>
+
+            <span class="pix">
+                <div></div>
+                Pix
+            </span>
+            <p>Resumo de valores: <span>R$ 69,90</span></p>
+            <p>Taxa de entrega: <span> R$ 7,00</span></p>
+            <p style="font-weight: 800; margin-top: 17px;font-size: 20px;">Total<span> R$ 76,90 </span></p>
+        </div>
+    </div>
+
+    <button class="btn-finalizar" (click)="onDivClick()">finalizar</button>
+
+
+
+    <div *ngIf="showConfirm" class="confirm-box">
+        <p>PAGAMENTO REALIZADO?</p>
+        <div>
+
+            <button (click)="onConfirPayment()">Sim</button>
+            <button (click)="onCancelPayment()">Não</button>
+        </div>
+
+    </div>
+    <div *ngIf="showMessage" class="payment-message">
+        <p>PEDIDO ENTREGUE COM SUCESSO</p>
+
+    </div>
+</main>
