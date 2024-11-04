@@ -1,3 +1,4 @@
+import { ClientData, PostFormClientService } from './../../services/post-form-client.service';
 
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
@@ -19,7 +20,7 @@ import { Router } from '@angular/router';
   styleUrl: './form-client.component.css'
 })
 export class FormClientComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postFormClientService: PostFormClientService) {}
 
 
   profileForm = new FormGroup({
@@ -38,9 +39,22 @@ export class FormClientComponent {
   handleSubmit() {
     this.profileForm.markAllAsTouched(); // Força a exibição de erros
     if (this.profileForm.valid) {
-      console.log(this.profileForm.value);
+      const clientData: ClientData = {
+        name: this.profileForm.value.name || '',
+        phone: this.profileForm.value.phone || '',
+        cep: this.profileForm.value.zipcode || '',
+        number: this.profileForm.value.number || ''
+      };
 
-      this.irParaPedidos()
+      this.postFormClientService.saveClient(clientData).subscribe({
+        next: (response) => {
+          console.log('Cliente salvo com sucesso', response);
+          this.irParaPedidos();
+        },
+        error: (error) => {
+          console.error('Erro ao salvar cliente', error);
+        }
+      });
     } else {
       console.log('Formulário inválido');
     }

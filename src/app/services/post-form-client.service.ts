@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface ClientData {
+export interface ClientData {
   name: string;
   phone: string;
-  zipcode: string;
+  cep: string;
   number: string;
 }
 
@@ -13,7 +13,7 @@ interface ClientData {
   providedIn: 'root'
 })
 export class PostFormClientService {
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:8080/clients';
 
   constructor(private http: HttpClient) {}
 
