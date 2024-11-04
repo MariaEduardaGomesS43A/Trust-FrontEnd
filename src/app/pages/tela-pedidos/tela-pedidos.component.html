@@ -1,16 +1,5 @@
-<div class="container-card">
-  <div class="card-header">
-    <div class="p">
-      <button class="back-button" (click)="irParaCliente()"><</button>
-    </div>
-  </div>
-  <div class="title">
-    <span class="tamanho">{{ Title }}</span>
-  </div>
-</div>
-
 <div class="container">
-  <div class="section" *ngFor="let item of items">
+  <div class="section" *ngFor="let item of items; let i = index">
     <hr />
     <h2>{{ item.category }}</h2>
     <hr />
@@ -22,8 +11,18 @@
         R$ {{ item.price | decimalFormatter }}
         <span class="original-price">R$ {{ item.originalPrice | decimalFormatter }}</span>
       </p>
+      <label>
+        <input
+          type="radio"
+          name="itemSelection"
+          [value]="i"
+          [(ngModel)]="selectedItemIndex"
+          (change)="onSelectItem(i)" />
+        Selecionar
+      </label>
     </div>
   </div>
+
   <div class="footer">
     <div class="contador">
       <button (click)="decreaseQuantity()">-</button>

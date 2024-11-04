@@ -6,11 +6,10 @@ import { PostPedidosService } from '../../services/post-pedidos.service';
 import { Router } from '@angular/router';
 import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
 
-
 @Component({
   selector: 'app-tela-pedidos',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, FormsModule, DecimalFormatterPipe ],
+  imports: [HeaderComponent, CommonModule, FormsModule, DecimalFormatterPipe],
   templateUrl: './tela-pedidos.component.html',
   styleUrls: ['./tela-pedidos.component.css']
 })
@@ -41,9 +40,11 @@ export class TelaPedidosComponent {
       originalPrice: 15.00
     }
   ];
+
   quantity = 1;
+  selectedItemIndex = 0;
   totalPrice = this.items[0].price;
-  Title = "Trust: Seu Pedido, Nossa Prioridade"
+  Title = "Trust: Seu Pedido, Nossa Prioridade";
 
   constructor(private pedidoService: PostPedidosService, private route: Router) {}
 
@@ -60,28 +61,33 @@ export class TelaPedidosComponent {
   }
 
   updateTotalPrice(): void {
-    this.totalPrice = this.items[0].price * this.quantity;
+    this.totalPrice = this.items[this.selectedItemIndex].price * this.quantity;
   }
 
   addToCart(): void {
-    const orderData = {
-      items: this.items,
-      quantity: this.quantity,
-      totalPrice: this.totalPrice
+    const selectedItem = this.items[this.selectedItemIndex]; // Obtém o item selecionado
+    const pratoData = {
+      name: selectedItem.name,
+      description: selectedItem.description,
+      price: selectedItem.price
     };
 
-    this.pedidoService.enviarPedido(orderData).subscribe(
-      response => {
-        console.log('Pedido enviado com sucesso:', response);
-        this.irParaEditarPedidos()
+    this.pedidoService.enviarPrato(pratoData).subscribe({
+      next: (response) => {
+        console.log('Prato enviado com sucesso:', response);
+        // Aqui você pode redirecionar o usuário ou mostrar uma mensagem de sucesso
       },
-      error => {
-        console.error('Erro ao enviar o pedido:', error);
-        this.irParaEditarPedidos()
+      error: (error) => {
+        console.error('Erro ao enviar prato:', error);
+        // Aqui você pode mostrar uma mensagem de erro
       }
-    );
+    });
   }
 
+  onSelectItem(index: number): void {
+    this.selectedItemIndex = index;
+    this.updateTotalPrice();
+  }
 
   irParaEditarPedidos() {
     this.route.navigate(['editar-pedido']);
