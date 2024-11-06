@@ -1,0 +1,64 @@
+/* Container principal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Título */
+div h1 {
+  font-size: 54px;
+  color: #3E3E3E;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Descrição */
+div p {
+  font-size: 22px;
+  color: #666;
+  max-width: 500px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* Estilos responsivos para o container */
+@media (max-width: 768px) {
+  div h1 {
+    font-size: 34px;
+  }
+
+  div p {
+    font-size: 17px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  div h1 {
+    font-size: 20px;
+  }
+
+  div p {
+    font-size: 15px;
+  }
+}

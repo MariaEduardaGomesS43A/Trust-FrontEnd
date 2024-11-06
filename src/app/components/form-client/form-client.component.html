@@ -1,0 +1,44 @@
+<form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+  <label>
+    Nome:
+    <input type="text" formControlName="name" maxlength="50" />
+    <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+      <small *ngIf="profileForm.get('name')?.errors?.['required']">Nome é obrigatório.</small>
+      <small *ngIf="profileForm.get('name')?.errors?.['minlength']">Nome precisa ter no mínimo 3 caracteres.</small>
+      <small *ngIf="profileForm.get('name')?.errors?.['maxlength']">Nome pode ter no máximo 50 caracteres.</small>
+    </div>
+  </label>
+
+  <label>
+    Telefone:
+    <input type="text" formControlName="phone"  minlength="11" maxlength="14" placeholder="( ) _ _ _ _ _ - _ _ _ _"/>
+    <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched">
+      <small *ngIf="profileForm.get('phone')?.errors?.['required']">Telefone é obrigatório.</small>
+      <!-- <small *ngIf="profileForm.get('phone')?.errors?.['pattern']">Digite um telefone válido (10-11 dígitos).</small> -->
+    </div>
+  </label>
+
+  <label>
+    Cep:
+    <input type="text" formControlName="zipcode" minlength="8" maxlength="9" placeholder="_ _ _ _ _ - _ _ _"/>
+    <div *ngIf="profileForm.get('zipcode')?.invalid && profileForm.get('zipcode')?.touched">
+      <small *ngIf="profileForm.get('zipcode')?.errors?.['required']">CEP é obrigatório.</small>
+    </div>
+  </label>
+
+  <label>
+    Número:
+    <input type="number" formControlName="number" maxlength="10"/>
+    <div *ngIf="profileForm.get('number')?.invalid && profileForm.get('number')?.touched">
+      <small *ngIf="profileForm.get('number')?.errors?.['required']">Número é obrigatório.</small>
+      <small *ngIf="profileForm.get('number')?.errors?.['min']">Número precisa ser maior que zero.</small>
+    </div>
+  </label>
+
+  <div class="arrumando">
+    <button type="submit" [disabled]="profileForm.invalid">CONFIRMAR</button>
+  </div>
+</form>
+
+
+

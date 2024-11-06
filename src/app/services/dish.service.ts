@@ -16,6 +16,7 @@ export interface Dish {
 })
 export class DishService {
   private apiUrl = 'http://localhost:8080/dishes';
+  public disheId: any = {}
 
   constructor(private http: HttpClient) {}
 
@@ -37,5 +38,9 @@ export class DishService {
 
   deleteDish(id: number): Observable<Dish> {
     return this.http.delete<Dish>(`${this.apiUrl}/${id}`);
+  }
+
+  setGeneratedDishId(dish: number) {
+    this.disheId = dish
   }
 }

@@ -1,13 +1,14 @@
-<app-header></app-header>
-<main>
-  <p>Bem vindo(a) ao Trust</p>
+<app-header [showButton]="showHeaderButton"></app-header>
 
-  <div class="buttons">
-    <button (click)="goCadastro()">cliente</button>
-    <button (click)="goCozinha()">cozinha</button>
-    <button (click)="goEntregador()">entregador</button>
+
+<div class="main">
+
+  <span class="texto">Bem VIndo (a) ao Trust</span>
+
+  <div class="caixa-btn">
+    <button class="btn-inicio" (click)="irParaCliente()">CLIENTE</button>
+    <button class="btn-inicio" (click)="goCozinha()">COZINHA</button>
+    <button class="btn-inicio" (click)="goEntregador()">ENTREGADOR</button>
   </div>
-  
-</main>
-
+</div>
 

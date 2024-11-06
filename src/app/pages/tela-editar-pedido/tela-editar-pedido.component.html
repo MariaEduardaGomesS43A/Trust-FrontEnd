@@ -1,0 +1,49 @@
+<app-header [Title]="headerTitulo"></app-header>
+
+<div class="container">
+  <div class="section" *ngFor="let item of items">
+    <h2>{{ item.name }}</h2>
+    <div class="caixa-description">
+      <p class="description">{{ item.description }}</p>
+    </div>
+    <p class="serves">Serve {{ item.serves }}</p>
+    <p class="price">
+      R$ {{ item.price | decimalFormatter }}
+      <span class="original-price">R$ {{ item.originalPrice | decimalFormatter}}</span>
+    </p>
+    <p class="restaurant">
+      <img src="../../../assets/images/restaurant.png" alt="">
+      {{ item.restaurant }}
+    </p>
+    <p class="delivery-time">0-40 min</p>
+
+    <div class="caixa-contem">
+      <div class="caixa-edit">
+        <button class="edit-button">DESEJA EDITAR?</button>
+      </div>
+    </div>
+
+    <div class="observacoes">
+      <!-- Associa o valor da textarea à variável observacoes -->
+      <textarea
+        id="observacoes"
+        rows="4"
+        placeholder="Observações:"
+        [(ngModel)]="observacoes"
+      ></textarea>
+    </div>
+  </div>
+  <!-- Chama o método confirmarPedido ao clicar no botão CONFIRMAR -->
+  <button class="confirm-button" (click)="confirmarPedido(items[0])">
+    CONFIRMAR
+  </button>
+
+  <!-- codigo condicional -->
+  <div *ngIf="showConfirm" class="confirm-box">
+    <p>DESEJA CONFIRMAR O PEDIDO?</p>
+    <div>
+      <button (click)="onConfirmEdit()">Sim</button>
+      <button (click)="onCancelEdit()">Não</button>
+    </div>
+  </div>
+</div>

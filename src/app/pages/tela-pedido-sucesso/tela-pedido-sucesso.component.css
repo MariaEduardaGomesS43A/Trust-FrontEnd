@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border: 1px solid #000;
+  border-radius: 20px;
+}
+
+.header h1 {
+  font-size: 0.91rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.back-button {
+  margin-left: 8px;
+  padding: 5px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.15rem;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.arrow-left::before {
+  content: '';
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
+.order-info, .order-details, .payment-info, .footer {
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5rem;
+
+}
+
+.order-info{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
+.arrumar-caixa{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.order-info strong{
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+p.estimate  {
+  color: gray;
+  font-size: 0.6rem;
+}
+
+.rua{
+  font-weight: bold;
+  color: #3E3E3E;
+}
+
+.address{
+  color: #3E3E3E;
+  font-size: 13px;
+}
+
+.tab-info{
+  border-radius: 20px;
+  border: #000 1px solid;
+  margin: 5px;
+  padding: 10px;
+}
+
+
+.payment-info span{
+  color: #50A773;
+}
+
+ .order-details h2, .payment-info h2, .footer p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  color: red;
+  font-weight: bold;
+}
+
+
+.order-details h2, .payment-info h2 {
+  font-weight: bold;
+  color: #3E3E3E;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.70rem;
+  padding: 0.5rem;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+
+
+.summary, .delivery-fee, .total, .payment-method {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.total {
+
+  font-weight: bold;
+}
+
+.payment-method {
+  border-top: 1px dashed #ddd;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-method span{
+  color: #000;
+}
+
+.footer p {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding-top: 10px;
+}
+
+.footer{
+  padding-top: 1rem;
+}
+
+.caixa-pix{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsividade */
+@media (min-width: 600px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .order-info p, .order-details h2, .payment-info h2, .footer p {
+    font-size: 1.1rem;
+  }
+}

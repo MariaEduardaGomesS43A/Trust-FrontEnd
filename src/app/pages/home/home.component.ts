@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../componentes/header/header.component';
 import { Router } from '@angular/router';
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [HeaderComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  showHeaderButton = false;
+  headerTitulo = 'Faça sua compra na Trust';
+
+  constructor(private route: Router) { }
+
+  irParaCliente() {
+    this.route.navigate(['cliente']);
+  }
+
   goCadastro() {
-    this.router.navigate(['/cadastro-cliente'])
+    this.route.navigate(['/cadastro-cliente'])
   }
   goCozinha() {
-    this.router.navigate(['/pedidos-cozinha'])
+    this.route.navigate(['/pedidos-cozinha'])
   }
   goEntregador() {
-    this.router.navigate(['/pedidos-entregador'])
+    this.route.navigate(['/pedidos-entregador'])
   }
 }

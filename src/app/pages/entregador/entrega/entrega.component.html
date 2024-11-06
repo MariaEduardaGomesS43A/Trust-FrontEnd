@@ -12,8 +12,8 @@
             <p>Cliente: Pedro Wilsen</p>
             <p>Telefone: (11) 98510-5895</p>
             <p>Rua <span>João Torres Neto Miguel, 152 - Parque Sol</span></p>
-            <p>Pedido <span> 1x Pizza de Calabresa com Cebola Caramelizada </span></p>
-            <p>Número do pedido: <span> 12345 </span></p>
+            <p>Pedido <span> {{order.itens[0].quantity}}x {{order.itens[0].dish.name}}</span></p>
+            <p>Número do pedido: <span> {{order.id}} </span></p>
         </div>
         <div class="info-pagamento">
             <h5>Dados do pagamento </h5>
@@ -22,9 +22,9 @@
                 <div></div>
                 Pix
             </span>
-            <p>Resumo de valores: <span>R$ 69,90</span></p>
+            <p>Resumo de valores: <span>{{order.valor | currency : "R$"}}</span></p>
             <p>Taxa de entrega: <span> R$ 7,00</span></p>
-            <p style="font-weight: 800; margin-top: 17px;font-size: 20px;">Total<span> R$ 76,90 </span></p>
+            <p style="font-weight: 800; margin-top: 17px;font-size: 20px;">Total<span> {{order.valor + 7 | currency : "R$"}}</span></p>
         </div>
     </div>
 

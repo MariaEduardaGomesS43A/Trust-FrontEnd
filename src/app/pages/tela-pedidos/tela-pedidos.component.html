@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="section" *ngFor="let dishe of dishes; let i = index">
+    <hr />
+    <h2>{{ dishe.category }}</h2>
+    <hr />
+    <div class="item">
+      <h3>{{ dishe.name }}</h3>
+      <p class="description">{{ dishe.description }}</p>
+      <p class="serve" *ngIf="dishe.serves">Serve: {{ dishe.serves }}</p>
+      <p class="price">
+        R$ {{ dishe.price | decimalFormatter }}
+        <span class="original-price">R$ {{ dishe.originalPrice | decimalFormatter }}</span>
+      </p>
+      <label>
+        <input
+          type="radio"
+          name="itemSelection"
+          [value]="i"
+          [(ngModel)]="selectedItemIndex"
+          (change)="selectDisheId(dishe.id)" />
+        Selecionar
+      </label>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contador">
+      <button (click)="decreaseQuantity()">-</button>
+      <span>{{ quantity }}</span>
+      <button (click)="increaseQuantity()">+</button>
+    </div>
+
+    <div class="add">
+      <button class="add-button" (click)="addToCart()">
+        Adicionar
+        <span class="total-price">R$ {{ totalPrice | decimalFormatter }}</span>
+      </button>
+    </div>
+  </div>
+</div>
