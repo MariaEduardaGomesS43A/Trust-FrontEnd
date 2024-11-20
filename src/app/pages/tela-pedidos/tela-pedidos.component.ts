@@ -10,7 +10,7 @@ import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
 @Component({
   selector: 'app-tela-pedidos',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, FormsModule, DecimalFormatterPipe],
+  imports: [ CommonModule, FormsModule, DecimalFormatterPipe],
   templateUrl: './tela-pedidos.component.html',
   styleUrls: ['./tela-pedidos.component.css']
 })
@@ -84,6 +84,10 @@ export class TelaPedidosComponent {
       next: () =>{
         console.log("funcinou meu aliado!")
         console.log(pratoEditado);
+
+        // setar um intervalo para executar 2 post
+
+
       },
       error: (err) =>{
         console.log(err + "algo deu errado grandê!")
