@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostPedidosService } from '../../services/post-pedidos.service';
 import { Router } from '@angular/router';
 import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
+import { PostPedidos2Service } from '../../services/post-pedidos2.service';
 
 
 @Component({
@@ -49,8 +49,18 @@ export class TelaPedidosComponent {
   selectedItemIndex = 0;
   totalPrice = this.items[0].price;
   Title = "Trust: Seu Pedido, Nossa Prioridade";
+  order = {
+    clientId: 1,
+    itens: [
+      {
+        dishId: 1,
+        quantity: this.quantity
+      }
+    ]
+  };
 
-  constructor(private postPedidos: PostPedidosService, private route: Router) {}
+
+  constructor(private postPedidos: PostPedidosService, private postPedidos2: PostPedidos2Service, private route: Router) {}
 
   increaseQuantity(): void {
     this.quantity++;
@@ -85,8 +95,16 @@ export class TelaPedidosComponent {
         console.log("funcinou meu aliado!")
         console.log(pratoEditado);
 
-        // setar um intervalo para executar 2 post
+        this.postPedidos2.postOrder(this.order).subscribe(
+          response => {
+            console.log('Enviamos o segundo pos:', response);
 
+            this.irParaEditarPedidos();//por algum motivo da um erro quando executa esse cara
+          },
+          error => {
+            console.error('Erro ao enviar segundo post:', error);
+          }
+        );
 
       },
       error: (err) =>{
@@ -94,7 +112,6 @@ export class TelaPedidosComponent {
       }
 
     })
-
   }
 
   onSelectItem(index: number): void {
