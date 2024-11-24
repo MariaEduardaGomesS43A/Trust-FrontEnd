@@ -58,21 +58,23 @@ export class TelaEditarPedidoComponent implements OnInit {
   }
 
   onConfirmEdit() {
-    if (this.selectedItem) {
+    this.router.navigate(['pedido-succeso']);
+
+    /*if (this.selectedItem) {
       this.editarPedidoService.updateProduto(this.selectedItem.name, this.selectedItem).subscribe(
         (response) => {
           console.log('Pedido atualizado com sucesso:', response);
           this.loadProducts();
           this.observacoes = ''; // Limpa o campo de observações
           this.showConfirm = false; // Oculta o toast
-          this.router.navigate(['pedido-succeso']);
+
         },
         (error) => {
           console.error('Erro ao atualizar pedido:', error);
           this.router.navigate(['pedido-succeso']);
         }
       );
-    }
+    }*/
   }
 
   onCancelEdit() {
