@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EditarPedidoService {
 
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:8080/orders';
 
   constructor(private http: HttpClient) { }
 

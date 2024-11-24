@@ -14,29 +14,23 @@ import { DecimalFormatterPipe } from '../../pipe/decimal-formatter.pipe';
   styleUrls: ['./tela-editar-pedido.component.css']
 })
 export class TelaEditarPedidoComponent implements OnInit {
-  items = [
-    {
-      category: 'Pizza',
-      name: 'Pizza de Calabresa com Cebola Caramelizada',
-      description: 'Molho de tomate pelatti, muçarela especial, calabresa especial, cebola caramelizada.',
-      serves: '3 pessoas',
-      price: 69.90,
-      originalPrice: 99.90,
-      restaurant: 'Pizzaria Trust',
-      deliveryTime: '20-40 min'
-    },
-  ];
+  public items: any = {};
   quantity = 1;
   totalPrice = 0;
   observacoes = ''; // Armazena o valor da textarea
   showConfirm = false; // Controle para exibir o toast
   selectedItem: any; // Armazena o item selecionado para confirmar
   headerTitulo = 'PEDIDOS';
+  serve = ['Serve 3 pessoas', 'Serve 1 pessoa'];
+  condicional01 = false;
+  condicional02 =  false;
+
+
 
   constructor(
     private router: Router,
     private editarPedidoService: EditarPedidoService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadProducts();
@@ -45,8 +39,12 @@ export class TelaEditarPedidoComponent implements OnInit {
   loadProducts() {
     this.editarPedidoService.getProduros().subscribe(
       (data) => {
-        this.items = data;
-        this.totalPrice = this.items[0]?.price * this.quantity || 0;
+        this.items = data[0].itens[0].dish;
+
+        console.log("Isso é o que temos dentro de data: ", this.items);
+
+        this.condicional01 = this.items.name ==  'Pizza de Calabresa com Cebola Caramelizada';
+        this.condicional02 =  this.items.name == 'Bolo De Pote: Ninho com Nutella';
       },
       (error) => {
         console.error('Erro ao carregar produtos:', error);
@@ -55,8 +53,8 @@ export class TelaEditarPedidoComponent implements OnInit {
   }
 
   confirmarPedido(item: any) {
-    this.selectedItem = { ...item, observacoes: this.observacoes }; // Guarda o item com observações
-    this.showConfirm = true; // Exibe o toast
+    this.selectedItem = { ...item, observacoes: this.observacoes };
+    this.showConfirm = true;
   }
 
   onConfirmEdit() {
