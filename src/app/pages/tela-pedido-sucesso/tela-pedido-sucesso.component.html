@@ -11,19 +11,19 @@
       </p>
       <p class="status">{{ orderDetails.status }}</p>
       <p class="estimate">
-        ESTIMATIVA DE ENTREGA: {{ orderDetails.deliveryEstimate }}
+       <strong> ESTIMATIVA DE ENTREGA: 40 MIN</strong>
       </p>
     </div>
     <p class="address">
-      <span class="rua">Rua:</span> {{ orderDetails.address }}
+      <span class="rua">Cep:</span> {{ cep }}
     </p>
-    <p class="rua">Vendido e entregue por: {{ orderDetails.seller }}</p>
+    <p class="rua">Vendido e entregue por: Trust</p>
   </div>
 
   <div class="order-details">
     <h2>DETALHES DO PEDIDO</h2>
-    <div *ngFor="let item of orderDetails.items" class="item">
-      <p class="rua">{{ item.quantity }}x {{ item.name }}</p>
+    <div class="item">
+      <p class="rua">{{ quantity }}x {{ item.name }}</p>
       <span>R$ {{ item.price.toFixed(2) }}</span>
     </div>
   </div>
@@ -33,22 +33,22 @@
     <div class="tab-info">
       <div class="summary">
         <p>Resumo de valores:</p>
-        <span>R$ {{ orderDetails.paymentInfo.subtotal.toFixed(2) }}</span>
+        <span>R$ {{ orderDetails.valor.toFixed(2) }}</span>
       </div>
       <div class="delivery-fee">
         <p>Taxa de entrega:</p>
-        <span>R$ {{ orderDetails.paymentInfo.deliveryFee.toFixed(2) }}</span>
+        <span>R$ {{ taxaEntrega.toFixed(2) }}</span>
       </div>
       <div class="total">
         <p>Total:</p>
-        <span>R$ {{ orderDetails.paymentInfo.total.toFixed(2) }}</span>
+        <span>R$ {{total.toFixed(2) }}</span>
       </div>
       <div class="payment-method">
         <div class="caixa-pix">
           <img src="../../../assets/images/pix.png" alt="" />
           <p>{{ orderDetails.paymentInfo.method }}</p>
         </div>
-        <span>R$ {{ orderDetails.paymentInfo.total.toFixed(2) }}</span>
+        <span>R$ {{ total.toFixed(2) }}</span>
       </div>
     </div>
   </div>
