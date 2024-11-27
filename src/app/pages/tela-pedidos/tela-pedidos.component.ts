@@ -15,6 +15,7 @@ import { PostPedidos2Service } from '../../services/post-pedidos2.service';
   styleUrls: ['./tela-pedidos.component.css']
 })
 export class TelaPedidosComponent {
+  quantity = 1;
   items = [
     {
       category: 'Pizza',
@@ -44,11 +45,6 @@ export class TelaPedidosComponent {
       dishId: 3 // Adicione o dishId correspondente
     }
   ];
-
-  quantity = 1;
-  selectedItemIndex = 0;
-  totalPrice = this.items[0].price;
-  Title = "Trust: Seu Pedido, Nossa Prioridade";
   order = {
     clientId: 1,
     itens: [
@@ -58,6 +54,9 @@ export class TelaPedidosComponent {
       }
     ]
   };
+  selectedItemIndex = 0;
+  totalPrice = this.items[0].price;
+  Title = "Trust: Seu Pedido, Nossa Prioridade";
 
 
   constructor(private postPedidos: PostPedidosService, private postPedidos2: PostPedidos2Service, private route: Router) {}
@@ -85,7 +84,7 @@ export class TelaPedidosComponent {
       //id: selectedItem.dishId, -- banco de dados cria o id
       name: selectedItem.name,
       description: selectedItem.description,
-      price: selectedItem.price
+      price: selectedItem.price * this.quantity
     }
 
 
