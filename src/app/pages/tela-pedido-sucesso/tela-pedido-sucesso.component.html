@@ -23,8 +23,8 @@
   <div class="order-details">
     <h2>DETALHES DO PEDIDO</h2>
     <div class="item">
-      <p class="rua">{{ quantity }}x {{ item.name }}</p>
-      <span>R$ {{ item.price.toFixed(2) }}</span>
+      <p class="rua">{{ quantity }} x {{name}}</p>
+      <span>R$ {{ valor.toFixed(2) }}</span>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
     <div class="tab-info">
       <div class="summary">
         <p>Resumo de valores:</p>
-        <span>R$ {{ orderDetails.valor.toFixed(2) }}</span>
+        <span>R$ {{ valor.toFixed(2) }}</span>
       </div>
       <div class="delivery-fee">
         <p>Taxa de entrega:</p>
@@ -46,7 +46,7 @@
       <div class="payment-method">
         <div class="caixa-pix">
           <img src="../../../assets/images/pix.png" alt="" />
-          <p>{{ orderDetails.paymentInfo.method }}</p>
+          <!-- <p>{{ orderDetails.paymentInfo.method }}</p> -->
         </div>
         <span>R$ {{ total.toFixed(2) }}</span>
       </div>

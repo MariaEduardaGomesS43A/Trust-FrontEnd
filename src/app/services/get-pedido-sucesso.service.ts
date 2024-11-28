@@ -23,6 +23,8 @@ interface OrderDetails {
 export class GetPedidoSucessoService {
   private apiUrl = 'http://localhost:8080/orders';
 
+  private apiUrl02 = 'http://localhost:8080/clients/1';
+
   constructor(private http: HttpClient) {}
 
   public order: any;
@@ -46,4 +48,9 @@ export class GetPedidoSucessoService {
   public deleteOrder(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/status/${id}`)
   }
+
+  public getClient(): Observable<any>{
+    return this.http.get<any>(this.apiUrl02);
+  }
+
 }

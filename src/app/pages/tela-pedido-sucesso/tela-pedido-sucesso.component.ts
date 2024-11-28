@@ -20,6 +20,8 @@ export class TelaPedidoSucessoComponent  implements OnInit {
   taxaEntrega = 7;
   orderDetails: any;
   item: any;
+  valor = 0;
+  name = '';
 
 
 
@@ -31,10 +33,24 @@ export class TelaPedidoSucessoComponent  implements OnInit {
     this.getPedidoSucesso.getOrderDetails(orderId).subscribe(
       (data) => {
         this.orderDetails = data;
-        this.cep= this.orderDetails.client.cep
-        this.item = this.orderDetails.itens[0].dish;
+        this.item = this.orderDetails.itens[0];
         this.quantity =  this.orderDetails.itens[0].quantity;
+        this.name = this.orderDetails.itens[0].name;
+        this.getPedidoSucesso.getClient().subscribe(
+          response => {
+            console.log('valor de: ', response);
+            this.cep= response.cep;
+          },
+          error =>{
+            console.error('Erro fazer o get cliente:', error);
+          }
+        )
+        console.log("o que tem em data: ", this.orderDetails);
+
+
+        this.valor = this.orderDetails.valor;
         this.total = this.taxaEntrega + this.orderDetails.valor ;
+
 
 
       },
@@ -43,6 +59,8 @@ export class TelaPedidoSucessoComponent  implements OnInit {
       }
     );
   }
+
+
 
   irParaCliente() {
     this.route.navigate(['/']);
