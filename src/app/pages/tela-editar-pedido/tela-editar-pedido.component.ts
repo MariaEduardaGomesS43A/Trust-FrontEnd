@@ -58,6 +58,7 @@ export class TelaEditarPedidoComponent implements OnInit {
   }
 
   onConfirmEdit() {
+    console.log("valor observa: ", this.observacoes)
     this.router.navigate(['pedido-succeso']);
 
     /*if (this.selectedItem) {
