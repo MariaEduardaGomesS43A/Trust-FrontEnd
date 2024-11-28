@@ -52,7 +52,8 @@ export class TelaPedidosComponent {
         dishId: 1,
         quantity: this.quantity
       }
-    ]
+    ],
+    description: "null"
   };
   selectedItemIndex = 0;
   totalPrice = this.items[0].price;

@@ -22,9 +22,18 @@ export class TelaEditarPedidoComponent implements OnInit {
   selectedItem: any; // Armazena o item selecionado para confirmar
   headerTitulo = 'PEDIDOS';
   serve = ['Serve 3 pessoas', 'Serve 1 pessoa'];
+  arrayDescriptions = [
+    'Molho de tomate pelatti, muçarela especial, calabresa especial,cebola caramelizada. Dê seu toque gourmet escolhendo entre…',
+    'Feito com bolo de chocolate molhado com calda de leite condensado, Nutella pura e recheio de leite Ninho.',
+    'Coca cola original de 2L'
+  ]
   condicional01 = false;
   condicional02 =  false;
 
+  condicaoDescricao01 = false;
+  condicaoDescricao02 = false;
+  condicaoDescricao03 = false;
+  preco = 0;
 
 
   constructor(
@@ -39,12 +48,18 @@ export class TelaEditarPedidoComponent implements OnInit {
   loadProducts() {
     this.editarPedidoService.getProduros().subscribe(
       (data) => {
-        this.items = data[0].itens[0].dish;
+        this.items = data[0].itens[0];
+        this.preco = data[0].valor;
 
         console.log("Isso é o que temos dentro de data: ", this.items);
-
+        console.log("Isso é o que temos dentro de valor: ", this.preco);
         this.condicional01 = this.items.name ==  'Pizza de Calabresa com Cebola Caramelizada';
         this.condicional02 =  this.items.name == 'Bolo De Pote: Ninho com Nutella';
+
+
+        this.condicaoDescricao01 =  this.items.name == 'Pizza de Calabresa com Cebola Caramelizada';
+        this.condicaoDescricao02 =  this.items.name == 'Bolo De Pote: Ninho com Nutella';
+        this.condicaoDescricao03 =  this.items.name == 'Coca - Cola';
       },
       (error) => {
         console.error('Erro ao carregar produtos:', error);
@@ -61,8 +76,8 @@ export class TelaEditarPedidoComponent implements OnInit {
     console.log("valor observa: ", this.observacoes)
     this.router.navigate(['pedido-succeso']);
 
-    /*if (this.selectedItem) {
-      this.editarPedidoService.updateProduto(this.selectedItem.name, this.selectedItem).subscribe(
+    if (this.selectedItem) {
+      this.editarPedidoService.updateProduto(this.observacoes).subscribe(
         (response) => {
           console.log('Pedido atualizado com sucesso:', response);
           this.loadProducts();
@@ -75,7 +90,7 @@ export class TelaEditarPedidoComponent implements OnInit {
           this.router.navigate(['pedido-succeso']);
         }
       );
-    }*/
+    }
   }
 
   onCancelEdit() {

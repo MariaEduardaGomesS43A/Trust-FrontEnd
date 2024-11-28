@@ -4,14 +4,16 @@
   <div class="section" >
     <h2>{{ items.name }}</h2>
     <div class="caixa-description">
-      <p class="description">{{ items.description }}</p>
+      <p *ngIf="condicaoDescricao01">{{ arrayDescriptions[0] }}</p>
+      <p *ngIf="condicaoDescricao02">{{ arrayDescriptions[1] }}</p>
+      <p *ngIf="condicaoDescricao03">{{ arrayDescriptions[2] }}</p>
     </div>
     <!-- usar ng if para colocar o serve  -->
     <p class="serves" *ngIf="condicional01" >{{ serve[0]}}</p>
     <p class="serves" *ngIf="condicional02" >{{ serve[1]}}</p>
 
     <p class="price">
-      R$ {{ items.price | decimalFormatter }}
+      R$ {{ preco | decimalFormatter }}
       <span class="original-price">R$ {{ items.originalPrice | decimalFormatter}}</span>
     </p>
     <p class="restaurant">
