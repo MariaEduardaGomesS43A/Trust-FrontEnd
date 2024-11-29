@@ -45,33 +45,32 @@ export class TelaPedidosComponent {
       dishId: 3 // Adicione o dishId correspondente
     }
   ];
-  order = {
-    clientId: 1,
-    itens: [
-      {
-        dishId: 1,
-        quantity: this.quantity
-      }
-    ],
-    description: "null"
-  };
+
   selectedItemIndex = 0;
   totalPrice = this.items[0].price;
   Title = "Trust: Seu Pedido, Nossa Prioridade";
 
 
-  constructor(private postPedidos: PostPedidosService, private postPedidos2: PostPedidos2Service, private route: Router) {}
+  constructor(
+    private postPedidos: PostPedidosService,
+    private postPedidos2: PostPedidos2Service,
+    private route: Router) {}
 
-  increaseQuantity(): void {
+  increaseQuantity(): number {
     this.quantity++;
     this.updateTotalPrice();
+    console.log(`Quantity increased: ${this.quantity}`);
+    return this.quantity
   }
 
-  decreaseQuantity(): void {
+  decreaseQuantity(): number {
     if (this.quantity > 1) {
       this.quantity--;
       this.updateTotalPrice();
+      console.log(`Quantity decreased: ${this.quantity}`);
+      return this.quantity
     }
+    return this.quantity
   }
 
   updateTotalPrice(): void {
@@ -80,6 +79,7 @@ export class TelaPedidosComponent {
 
   addToCart(): void {
     const selectedItem = this.items[this.selectedItemIndex]; // Obtém o item selecionado
+    console.log(`Current quantity: ${this.quantity}`);
 
     const pratoEditado = {
       //id: selectedItem.dishId, -- banco de dados cria o id
@@ -88,6 +88,16 @@ export class TelaPedidosComponent {
       price: selectedItem.price * this.quantity
     }
 
+    const order = {
+      clientId: 1,
+      itens: [
+        {
+          dishId: 1,
+          quantity: this.quantity
+        }
+      ],
+      description: "null"
+    };
 
 
     this.postPedidos.enviarPrato(pratoEditado).subscribe({
@@ -95,11 +105,11 @@ export class TelaPedidosComponent {
         console.log("funcinou meu aliado!")
         console.log(pratoEditado);
 
-        this.postPedidos2.postOrder(this.order).subscribe(
+        this.postPedidos2.postOrder(order).subscribe(
           response => {
-            console.log('Enviamos o segundo pos:', response);
+            console.log('Enviamos o segundo post:', response);
 
-            this.irParaEditarPedidos();//por algum motivo da um erro quando executa esse cara
+            this.irParaEditarPedidos();
           },
           error => {
             console.error('Erro ao enviar segundo post:', error);
