@@ -1,15 +1,25 @@
+<div class="container-card">
+  <div class="card-header">
+    <div class="p">
+      <button class="back-button" (click)="irParaCliente()"><</button>
+    </div>
+  </div>
+  <div class="title">
+    <span class="tamanho">{{ Title }}</span>
+  </div>
+</div>
 <div class="container">
-  <div class="section" *ngFor="let dishe of dishes; let i = index">
+  <div class="section" *ngFor="let item of items; let i = index">
     <hr />
-    <h2>{{ dishe.category }}</h2>
+    <h2>{{ item.category }}</h2>
     <hr />
     <div class="item">
-      <h3>{{ dishe.name }}</h3>
-      <p class="description">{{ dishe.description }}</p>
-      <p class="serve" *ngIf="dishe.serves">Serve: {{ dishe.serves }}</p>
+      <h3>{{ item.name }}</h3>
+      <p class="description">{{ item.description }}</p>
+      <p class="serve" *ngIf="item.serves">Serve: {{ item.serves }}</p>
       <p class="price">
-        R$ {{ dishe.price | decimalFormatter }}
-        <span class="original-price">R$ {{ dishe.originalPrice | decimalFormatter }}</span>
+        R$ {{ item.price | decimalFormatter }}
+        <span class="original-price">R$ {{ item.originalPrice | decimalFormatter }}</span>
       </p>
       <label>
         <input
@@ -17,7 +27,7 @@
           name="itemSelection"
           [value]="i"
           [(ngModel)]="selectedItemIndex"
-          (change)="selectDisheId(dishe.id)" />
+          (change)="onSelectItem(i)" />
         Selecionar
       </label>
     </div>

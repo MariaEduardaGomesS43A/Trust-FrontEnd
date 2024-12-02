@@ -7,7 +7,9 @@
     <div class="header-color"></div>
     <div class="infos-pedido">
       <h5>N° - {{ order.id }}</h5>
-      <p>{{ order.itens[0].quantity }}x {{ order.itens[0].dish.name }}</p>
+      <div *ngFor="let item of order.itens">
+        <p>{{item.quantity }}x {{ item.name }}</p>
+      </div>
 
       <div class="infos">
         <input type="text" placeholder="OBS:" />
@@ -15,6 +17,10 @@
       </div>
       <!-- <p>obs</p> -->
     </div>
+  </div>
+
+  <div *ngIf="orders.length === 0">
+    <h1>Não há pedidos cadastrados no sistema.</h1>
   </div>
 
   <div *ngIf="showConfirm" class="confirm-box">

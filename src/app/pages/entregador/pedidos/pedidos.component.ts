@@ -28,8 +28,9 @@ export class PedidosEntregadorComponent {
   }
 
   public getOrders() {
-    this.service.getOrders().subscribe((data) => {
+    this.service.getOrdersShipped().subscribe((data) => {
       this.orders = data;
+      console.log(this.orders);
     })
   }
 }

@@ -9,17 +9,19 @@
         <div class="info-entrega">
             <h5>Dados da entrega </h5>
 
-            <p>Cliente: Pedro Wilsen</p>
-            <p>Telefone: (11) 98510-5895</p>
-            <p>Rua <span>João Torres Neto Miguel, 152 - Parque Sol</span></p>
-            <p>Pedido <span> {{order.itens[0].quantity}}x {{order.itens[0].dish.name}}</span></p>
+            <p>Cliente: {{order.nomeClient}}</p>
+            <p>Telefone: {{order.phone | phonePipe}}</p>
+            <p>CEP: {{order.cep | cep }}, n° {{number}}</p>
+            <div *ngFor="let pedido of order.itens">
+                <p>Pedido: <span> {{pedido.quantity}}x {{pedido.name}}</span></p>
+            </div>
             <p>Número do pedido: <span> {{order.id}} </span></p>
         </div>
         <div class="info-pagamento">
             <h5>Dados do pagamento </h5>
 
             <span class="pix">
-                <div></div>
+                <img src="../../../../assets/images/icons8-foto.svg" alt="">
                 Pix
             </span>
             <p>Resumo de valores: <span>{{order.valor | currency : "R$"}}</span></p>

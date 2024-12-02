@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class EditarPedidoService {
 
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:8080/orders';
+
+  private apiUrl02 = 'http://localhost:8080/orders/description/1';
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +17,7 @@ export class EditarPedidoService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  updateProduto(nome: string, produtoData: any): Observable<any> {
-    const url = `${this.apiUrl}/${nome}`;
-    return this.http.put<any>(url, produtoData);
+  updateProduto(observacoes: any): Observable<any> {
+    return this.http.put<any>(this.apiUrl02, observacoes);
   }
 }

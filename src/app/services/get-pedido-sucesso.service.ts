@@ -23,6 +23,8 @@ interface OrderDetails {
 export class GetPedidoSucessoService {
   private apiUrl = 'http://localhost:8080/orders';
 
+  private apiUrl02 = 'http://localhost:8080/clients/1';
+
   constructor(private http: HttpClient) {}
 
   public order: any;
@@ -35,6 +37,14 @@ export class GetPedidoSucessoService {
       return this.http.get<any>(`${this.apiUrl}`);
   }
 
+  public getOrdersPreparing(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/OrderByStatus/PREPARING`);
+}
+
+public getOrdersShipped(): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/OrderByStatus/SHIPPED`);
+}
+
   public setOrder(order: any) {
     this.order = order;
   }
@@ -45,5 +55,25 @@ export class GetPedidoSucessoService {
 
   public deleteOrder(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/status/${id}`)
+  }
+
+  public updateOrderToShipped(id: number, code: number) {
+    let body = {
+      id,
+      code
+    }
+    return this.http.put<any>(`${this.apiUrl}/status/${id}`, body);
+  }
+
+  public updateOrderToDelivered(id: number, code: number) {
+    let body = {
+      id,
+      code
+    }
+    return this.http.put<any>(`${this.apiUrl}/status/${id}`, body);
+  }
+
+  public getClient(): Observable<any>{
+    return this.http.get<any>(this.apiUrl02);
   }
 }

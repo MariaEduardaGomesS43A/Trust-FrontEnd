@@ -28,11 +28,7 @@ export class PedidosCozinhaComponent {
   }
 
   onConfirmDelete() {
-    alert('Item excluído!');
-    this.service.deleteOrder(this.idPedido).subscribe((data) => {
-      console.log("item excluido");
-      this.ngOnInit();  
-    })
+    this.updateOrderToShipped();
     this.showConfirm = false; 
   }
 
@@ -43,9 +39,16 @@ export class PedidosCozinhaComponent {
   goBack(){
     this.location.back();
   }
+  public updateOrderToShipped() {
+    this.service.updateOrderToShipped(Number(this.idPedido), 2).subscribe((data) => {
+      console.log(data);
+      alert('Pedido enviado ao entregador!');
+      this.ngOnInit();
+    })
+  }
 
   public getOrders() {
-    this.service.getOrders().subscribe((data) => {
+    this.service.getOrdersPreparing().subscribe((data) => {
       this.orders = data;
     })
   }
